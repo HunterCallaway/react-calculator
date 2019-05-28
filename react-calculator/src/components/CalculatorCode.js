@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 export const CalculatorCode = () => {
 
-	const decimalBtn = document.getElementById('calc-decimal');
-	const clearBtn = document.getElementById('calc-clear');
-	const backspaceBtn = document.getElementById('calc-backspace');
+	//const decimalBtn = document.getElementById('calc-decimal');
+	//const clearBtn = document.getElementById('calc-clear');
+	//const backspaceBtn = document.getElementById('calc-backspace');
 	const displayValElement = document.getElementById('calc-display-val');
 
 	let displayVal = '0';
@@ -13,6 +13,7 @@ export const CalculatorCode = () => {
 
 	const calcNumBtns = document.getElementsByClassName('calc-btn-num');
 	const calcOperatorBtns = document.getElementsByClassName('calc-btn-operator');
+
 
 	const updateDisplayVal = (clickObj) => {
 		//Determine which button was clicked.
@@ -115,14 +116,16 @@ export const CalculatorCode = () => {
 		calcOperatorBtns[i].addEventListener('click', performOperation, false);
 	}
 
-	clearBtn.onclick = () => {
+	const clearBtn = () => {
+		document.getElementById('calc-clear');
 		displayVal = '0';
 		pendingVal = undefined;
 		evalStringArray = [];
 		displayValElement.innerText = displayVal;
 	};
 
-	backspaceBtn.onclick = () => {
+	const backspaceBtn = () => {
+		document.getElementById('calc-backspace');
 		let lengthOfDisplayVal = displayVal.length;
 		//Take the highest-indexed element, and remove it.
 		displayVal = displayVal.slice(0, lengthOfDisplayVal - 1);
@@ -136,7 +139,8 @@ export const CalculatorCode = () => {
 		displayValElement.innerText = displayVal;
 	};
 
-	decimalBtn.onclick = () => {
+	const decimalBtn = () => {
+		document.getElementById('calc-decimal');
 		//If the entry doesn't already include a decimal, add one when the user clicks the decimal button.
 		if(!displayVal.includes('.')) {
 			displayVal = displayVal + '.';
@@ -144,6 +148,64 @@ export const CalculatorCode = () => {
 		//Display the updated entry.
 		displayValElement.innerText = displayVal;
 	};
-};
 
+	return (
+		<Fragment>
+			<div id="calc-parent">
+
+				<div className="row">
+					<div className="column"
+						  id="calc-display-val"
+
+					>0</div>
+				</div>
+
+				<div className="row">
+					<div className="calc-btn column"
+						  id="calc-clear"
+						  onClick={clearBtn}
+					>AC</div>
+					<div className="calc-btn column"
+						  id="calc-backspace"
+						  onClick={backspaceBtn}
+					>&#8676;</div>
+					<div className="calc-btn calc-btn-operator column" id="calc-divide">&#247;</div>
+				</div>
+
+				<div className="row">
+					<div className="calc-btn calc-btn-num column" id="calc-seven">7</div>
+					<div className="calc-btn calc-btn-num column" id="calc-eight">8</div>
+					<div className="calc-btn calc-btn-num column" id="calc-nine">9</div>
+					<div className="calc-btn calc-btn-operator column" id="calc-multiply">x</div>
+				</div>
+
+				<div className="row">
+					<div className="calc-btn calc-btn-num column" id="calc-four">4</div>
+					<div className="calc-btn calc-btn-num column" id="calc-five">5</div>
+					<div className="calc-btn calc-btn-num column" id="calc-six">6</div>
+					<div className="calc-btn calc-btn-operator column" id="calc-minus">-</div>
+				</div>
+
+				<div className="row">
+					<div className="calc-btn calc-btn-num column" id="calc-one">1</div>
+					<div className="calc-btn calc-btn-num column" id="calc-two">2</div>
+					<div className="calc-btn calc-btn-num column" id="calc-three">3</div>
+					<div className="calc-btn calc-btn-operator column" id="calc-plus">+</div>
+				</div>
+
+				<div className="row">
+					<div className="calc-btn calc-btn-num column" id="calc-zero">0</div>
+					<div className="calc-btn column"
+						  id="calc-decimal"
+						  onClick={decimalBtn}
+					>.</div>
+					<div className="calc-btn calc-btn-operator column"
+						  id="calc-equals"
+					>=</div>
+				</div>
+
+			</div>
+		</Fragment>
+	);
+};
 
