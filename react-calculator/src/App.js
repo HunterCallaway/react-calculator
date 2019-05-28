@@ -1,4 +1,5 @@
-import React from 'react';
+/*import React from 'react';
+import ReactDOM from "react-dom";
 import './App.css';
 import Calculator from './components/Calculator';
 import {CalculatorCode} from './components/CalculatorCode';
@@ -14,4 +15,5 @@ function App() {
   );
 }
 
-export default App;
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);*/

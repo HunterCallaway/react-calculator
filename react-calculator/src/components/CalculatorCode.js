@@ -5,7 +5,7 @@ export const CalculatorCode = () => {
 	//const decimalBtn = document.getElementById('calc-decimal');
 	//const clearBtn = document.getElementById('calc-clear');
 	//const backspaceBtn = document.getElementById('calc-backspace');
-	const displayValElement = document.getElementById('calc-display-val');
+	//const displayValElement = document.getElementById('calc-display-val');
 
 	let displayVal = '0';
 	let pendingVal;
@@ -18,6 +18,7 @@ export const CalculatorCode = () => {
 	const updateDisplayVal = (clickObj) => {
 		//Determine which button was clicked.
 		let btnText = clickObj.target.innerText;
+		const displayValElement = document.getElementById('calc-display-val');
 
 		//Prevent the display element from displaying numbers preceded by '0'.
 		if(displayVal === '0') {
@@ -37,6 +38,7 @@ export const CalculatorCode = () => {
 	const performOperation = (clickObj) => {
 		//Determine which operator was clicked by the id.
 		let operator = clickObj.target.id;
+		let displayValElement = document.getElementById('calc-display-val');
 
 		switch(operator) {
 
@@ -117,6 +119,7 @@ export const CalculatorCode = () => {
 	}
 
 	const clearBtn = () => {
+		let displayValElement = document.getElementById('calc-display-val');
 		document.getElementById('calc-clear');
 		displayVal = '0';
 		pendingVal = undefined;
@@ -125,6 +128,7 @@ export const CalculatorCode = () => {
 	};
 
 	const backspaceBtn = () => {
+		let displayValElement = document.getElementById('calc-display-val');
 		document.getElementById('calc-backspace');
 		let lengthOfDisplayVal = displayVal.length;
 		//Take the highest-indexed element, and remove it.
@@ -140,6 +144,7 @@ export const CalculatorCode = () => {
 	};
 
 	const decimalBtn = () => {
+		let displayValElement = document.getElementById('calc-display-val');
 		document.getElementById('calc-decimal');
 		//If the entry doesn't already include a decimal, add one when the user clicks the decimal button.
 		if(!displayVal.includes('.')) {
@@ -156,7 +161,6 @@ export const CalculatorCode = () => {
 				<div className="row">
 					<div className="column"
 						  id="calc-display-val"
-
 					>0</div>
 				</div>
 
@@ -169,38 +173,81 @@ export const CalculatorCode = () => {
 						  id="calc-backspace"
 						  onClick={backspaceBtn}
 					>&#8676;</div>
-					<div className="calc-btn calc-btn-operator column" id="calc-divide">&#247;</div>
+					<div className="calc-btn calc-btn-operator column"
+						  id="calc-divide"
+						  onClick={performOperation}
+					>&#247;</div>
 				</div>
 
 				<div className="row">
-					<div className="calc-btn calc-btn-num column" id="calc-seven">7</div>
-					<div className="calc-btn calc-btn-num column" id="calc-eight">8</div>
-					<div className="calc-btn calc-btn-num column" id="calc-nine">9</div>
-					<div className="calc-btn calc-btn-operator column" id="calc-multiply">x</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-seven"
+						  onClick={updateDisplayVal}
+					>7</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-eight"
+						  onClick={updateDisplayVal}
+					>8</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-nine"
+						  onClick={updateDisplayVal}
+					>9</div>
+					<div className="calc-btn calc-btn-operator column"
+						  id="calc-multiply"
+						  onClick={performOperation}
+					>x</div>
 				</div>
 
 				<div className="row">
-					<div className="calc-btn calc-btn-num column" id="calc-four">4</div>
-					<div className="calc-btn calc-btn-num column" id="calc-five">5</div>
-					<div className="calc-btn calc-btn-num column" id="calc-six">6</div>
-					<div className="calc-btn calc-btn-operator column" id="calc-minus">-</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-four"
+						  onClick={updateDisplayVal}
+					>4</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-five"
+						  onClick={updateDisplayVal}
+					>5</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-six"
+						  onClick={updateDisplayVal}
+					>6</div>
+					<div className="calc-btn calc-btn-operator column"
+						  id="calc-minus"
+						  onClick={performOperation}
+					>-</div>
 				</div>
 
 				<div className="row">
-					<div className="calc-btn calc-btn-num column" id="calc-one">1</div>
-					<div className="calc-btn calc-btn-num column" id="calc-two">2</div>
-					<div className="calc-btn calc-btn-num column" id="calc-three">3</div>
-					<div className="calc-btn calc-btn-operator column" id="calc-plus">+</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-one"
+						  onClick={updateDisplayVal}
+					>1</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-two"
+						  onClick={updateDisplayVal}
+					>2</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-three"
+						  onClick={updateDisplayVal}
+					>3</div>
+					<div className="calc-btn calc-btn-operator column"
+						  id="calc-plus"
+						  onClick={performOperation}
+					>+</div>
 				</div>
 
 				<div className="row">
-					<div className="calc-btn calc-btn-num column" id="calc-zero">0</div>
+					<div className="calc-btn calc-btn-num column"
+						  id="calc-zero"
+						  onClick={updateDisplayVal}
+					>0</div>
 					<div className="calc-btn column"
 						  id="calc-decimal"
 						  onClick={decimalBtn}
 					>.</div>
 					<div className="calc-btn calc-btn-operator column"
 						  id="calc-equals"
+						  onClick={performOperation}
 					>=</div>
 				</div>
 
