@@ -5,7 +5,7 @@
   "dependencies": {
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "lodash": "^4.17.20",
     "lodash.update": "^4.10.2",
     "npm-upgrade": "^2.0.4",
